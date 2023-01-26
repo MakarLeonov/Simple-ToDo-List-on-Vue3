@@ -24,7 +24,8 @@ export default {
             if (this.text != '') {
                 let newNote = {
                     id: Date.now(),
-                    note: this.text
+                    note: this.text,
+                    date: ''
                 }
 
                 this.$emit('addNewNote', newNote);

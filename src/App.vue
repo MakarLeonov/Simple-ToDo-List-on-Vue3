@@ -8,7 +8,8 @@
                 @toDeleteNote="toDeleteNote"
                 @addNewNote="addNewNote"
                 @toEditNote="toEditNote"
-                @returnToNotes="returnToNotes"  />
+                @returnToNotes="returnToNotes"
+                @removeToDone="removeToDone"  />
         </div>
         
     </div>
@@ -26,14 +27,14 @@ export default {
             notes: [
                 { id: 5, note: 'Обновить приложение', date: '20.03.2023' },
                 { id: 6, note: 'Добавить функционал', date: '20.03.2023' },
-                { id: 7, note: 'Не забыть поспать', date: '20.03.2023' },
+                { id: 7, note: 'Закинуть на GitHub', date: '20.03.2023' },
             ],
 
             done: [
-                { id: 1, note: 'Готово 1', date: '20.03.2023' },
-                { id: 2, note: 'Готово 2', date: '21.03.2023' },
-                { id: 3, note: 'Готово 3', date: '22.03.2023' },
-                { id: 4, note: 'Готово 4', date: '23.03.2023' },
+                { id: 1, note: 'Сломать всё к чертям', date: '20.03.2023' },
+                { id: 2, note: 'Молиться, чтобы всё заработало', date: '21.03.2023' },
+                { id: 3, note: 'Тупить час и потом вернуть всё, как было', date: '22.03.2023' },
+                { id: 4, note: 'Забыть поспать', date: '23.03.2023' },
             ],
         }
     },
@@ -54,14 +55,14 @@ export default {
         },
 
         returnToNotes(index) {
-            // let returningNote = {
-            //         id: this.done[index].id,
-            //         note: this.done[index].note,
-            //     }
-            // this.notes.push(returningNote);
-
             this.notes.push(this.done[index]);
             this.done.splice(index, 1);
+        },
+
+        removeToDone(newIndex) {
+            this.notes[newIndex].date = new Date().toLocaleDateString();
+            this.done.push(this.notes[newIndex]);
+            this.notes.splice(newIndex, 1);
         }
     },
 }

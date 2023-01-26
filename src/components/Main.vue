@@ -6,7 +6,8 @@
             v-if="notes.length > 0"
             :notes="notes"
             @toDeleteNote="toDeleteNote"
-            @toEditNote="toEditNote"  />
+            @toEditNote="toEditNote"
+            @removeToDone="removeToDone"  />
         
         <p class="addNewNote" v-else >Список заметок пуст, добавьте первую :)</p>
 
@@ -40,6 +41,11 @@ export default {
 
         toEditNote(index, text){
             this.$emit('toEditNote', index, text);
+        },
+
+        removeToDone(newIndex) {
+            console.log("Main: ", newIndex)
+            this.$emit('removeToDone', newIndex);
         }
     },
 }

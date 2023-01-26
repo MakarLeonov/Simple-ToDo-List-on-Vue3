@@ -11,7 +11,8 @@
                 :note="note" 
                 :index="index"
                 @toDeleteNote="toDeleteNote"
-                @toEditNote="toEditNote"  />
+                @toEditNote="toEditNote"
+                @removeToDone="removeToDone"  />
         </transition-group>
     </div>
 </template>
@@ -36,6 +37,11 @@ export default {
 
         toEditNote(index, text){
             this.$emit('toEditNote', index, text);
+        },
+
+        removeToDone(newIndex) {
+            console.log("NoteList: ", newIndex)
+            this.$emit('removeToDone', newIndex);
         }
     },
 

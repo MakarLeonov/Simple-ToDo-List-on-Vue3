@@ -2,7 +2,7 @@
     <div class="note" @dblclick="showInput">
             <div class="left">
                 <!-- <input class="checkbox" type="checkbox"> -->
-                <span class="material-symbols-outlined done">add_task</span>
+                <span class="material-symbols-outlined done" @click="removeToDone">add_task</span>
                 <input
                     autofocus
                     type="text"
@@ -58,6 +58,11 @@ export default {
             this.editing = true;
         },
 
+        removeToDone() {
+            let newIndex = this.index;
+            console.log("MyNote: ", newIndex)
+            this.$emit('removeToDone', newIndex);
+        }
         
     },
     
