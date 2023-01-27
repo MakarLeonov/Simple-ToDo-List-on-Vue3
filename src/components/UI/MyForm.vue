@@ -3,15 +3,22 @@
             <input 
                 type="text" 
                 class="form_inp" 
-                v-model="text"
+                v-model.trim="text"
                 @keydown.enter="addNewNote"
             >
-            <button class="form_btn" @click="addNewNote">Добавить</button>
+            
+            <my-button @click="addNewNote"></my-button>
         </div>
 </template>
 <script>
+import MyButton from "@/components/UI/MyButton.vue";
 
 export default {
+
+    components: {
+        MyButton, 
+    },
+
     data() {
         return {
             text: '',
