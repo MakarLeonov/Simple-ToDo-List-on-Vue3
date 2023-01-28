@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="title">Выполнено</p>
+        <page-title>Выполнено</page-title>
 
         <done-list
             :done="done"
@@ -12,9 +12,11 @@
 </template>
 <script>
 import DoneList from "@/components/DoneList.vue";
+import PageTitle from "@/components/UI/PageTitle.vue";
+
 export default {
     components: {
-        DoneList,
+        DoneList, PageTitle,
     },
 
     props: {
@@ -34,10 +36,5 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-    .title {
-        font-size: 22px;
-        font-weight: 500;
-        margin-bottom: 10px;
-        text-align: center;
-    }
+    
 </style>

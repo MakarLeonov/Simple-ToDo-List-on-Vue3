@@ -14,6 +14,7 @@
                     v-else 
                     class="note_text"   
                 >{{ note.note }}</p>
+                
             </div>
             <div class="right">
                 <!-- <span class="material-symbols-outlined done">add_task</span> -->

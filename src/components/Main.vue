@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="title">Список задач</p>
+        <page-title>Список задач</page-title>
 
         <note-list 
             v-if="notes.length > 0"
@@ -18,10 +18,11 @@
 <script>
 import NoteList from "@/components/NoteList.vue";
 import MyForm from "@/components/UI/MyForm.vue";
+import PageTitle from "@/components/UI/PageTitle.vue";
 
 export default {
     components: {
-        NoteList, MyForm,
+        NoteList, MyForm, PageTitle
     },
 
     props: {
@@ -52,12 +53,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-    .title {
-        font-size: 22px;
-        font-weight: 500;
-        margin-bottom: 10px;
-        text-align: center;
-    }
     .addNewNote {
         text-align: center;
         padding: 8px;

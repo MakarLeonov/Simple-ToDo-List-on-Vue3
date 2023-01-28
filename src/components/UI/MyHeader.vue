@@ -1,7 +1,11 @@
 <template lang="">
     <header>
             <div class="container">
-                <div class="logo">Logotip</div>
+                <router-link to="/main" class="logo">
+                    <span class="material-symbols-outlined logo">list_alt</span>
+                    Logotip
+                </router-link>
+                    
                 <nav>
                     <router-link to="/main">Home</router-link>
                     <router-link to="/done">Done</router-link>
@@ -37,6 +41,15 @@ export default {
                 font-size: 26px;
                 font-weight: 500;
                 color: $font_c;
+
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+
+                &:hover {
+                        color: yellow;
+                        cursor: pointer;
+                    }
             }
 
             nav {

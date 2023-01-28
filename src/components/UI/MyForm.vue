@@ -2,6 +2,7 @@
     <div class="form">
             <input 
                 type="text" 
+                ref="input"
                 class="form_inp" 
                 v-model.trim="text"
                 @keydown.enter="addNewNote"
@@ -26,6 +27,10 @@ export default {
         }
     },
 
+    mounted() {
+            this.toFocusInput()
+        },
+
     methods: {
         addNewNote(){
             if (this.text != '') {
@@ -38,7 +43,12 @@ export default {
                 this.$emit('addNewNote', newNote);
                 this.text = '';
             }
+
         },
+        
+        toFocusInput(){
+            this.$refs.input.focus();        
+        }
     },
 }
 </script>

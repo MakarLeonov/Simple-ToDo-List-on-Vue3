@@ -65,6 +65,8 @@ export default {
             this.notes.splice(newIndex, 1);
         }
     },
+
+
 }
 </script>
 <style lang="scss">
