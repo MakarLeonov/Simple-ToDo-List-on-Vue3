@@ -24,47 +24,50 @@ export default {
 
     data() {
         return {
-            notes: [
-                { id: 5, note: 'Обновить приложение', date: '20.03.2023' },
-                { id: 6, note: 'Добавить функционал', date: '20.03.2023' },
-                { id: 7, note: 'Закинуть на GitHub', date: '20.03.2023' },
-            ],
-
-            done: [
-                { id: 1, note: 'Сломать всё к чертям', date: '20.03.2023' },
-                { id: 2, note: 'Молиться, чтобы всё заработало', date: '21.03.2023' },
-                { id: 3, note: 'Тупить час и потом вернуть всё, как было', date: '22.03.2023' },
-                { id: 4, note: 'Забыть поспать', date: '23.03.2023' },
-            ],
+            notes: [],
+            done: [],
         }
     },
 
     methods: {
         toDeleteNote(index){
             this.notes.splice(index, 1);
+            localStorage.notes = JSON.stringify(this.notes);
         },
 
         addNewNote(newNote){
             this.notes.push(newNote);
+            localStorage.notes = JSON.stringify(this.notes);
         },
 
         toEditNote(index, text){
             console.log(index, text);
-
             this.notes[index].note = text;
+            localStorage.notes = JSON.stringify(this.notes);
         },
 
         returnToNotes(index) {
             this.notes.push(this.done[index]);
             this.done.splice(index, 1);
+            localStorage.notes = JSON.stringify(this.notes);
+            localStorage.done = JSON.stringify(this.done);
         },
 
         removeToDone(newIndex) {
             this.notes[newIndex].date = new Date().toLocaleDateString();
             this.done.push(this.notes[newIndex]);
             this.notes.splice(newIndex, 1);
+            localStorage.notes = JSON.stringify(this.notes);
+            localStorage.done = JSON.stringify(this.done);
         }
     },
+
+    beforeMount() {
+        this.notes = JSON.parse(localStorage.getItem('notes'))
+        this.done = JSON.parse(localStorage.getItem('done'))
+    },
+
+
 
 
 }
